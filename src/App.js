@@ -1,5 +1,5 @@
 import React, {} from 'react';
-import {scaleBand, scaleLinear, extent, format} from 'd3';
+import {scaleTime, scaleLinear, extent, timeFormat} from 'd3';
 import {useData} from "./hooks/useData";
 import {AxisBottom} from "./components/AxisBottom";
 import {AxisLeft} from "./components/AxisLeft";
@@ -24,11 +24,11 @@ const App = () => {
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
-  const xValue = d => d.sepal_length
-  const xAxisLabel = 'Sepal Length'
+  const xValue = d => d.timestamp
+  const xAxisLabel = 'Time'
 
-  const yValue = d => d.sepal_width
-  const yAxisLabel = 'Sepal Width'
+  const yValue = d => d.temperature
+  const yAxisLabel = 'Temperature'
 
 
   // d.sepal_length = +d.sepal_length;
@@ -36,17 +36,16 @@ const App = () => {
   // d.petal_length = +d.petal_length;
   // d.petal_width = +d.petal_width;
 
-  const siFormat = format('.2s')
-  const xAxisTickFormat = tickValue => siFormat(tickValue).replace('G', 'B')
+  const xAxisTickFormat = timeFormat('%a')
 
-  const xScale = scaleLinear()
+  const xScale = scaleTime()
     .domain(extent(data, xValue))
     .range([0, innerWidth])
     .nice();
 
   const yScale = scaleLinear()
     .domain(extent(data, yValue))
-    .range([0, innerHeight])
+    .range([innerHeight, 0])
 
   return (
     <svg width={width} height={height}>

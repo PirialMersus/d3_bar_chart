@@ -3,7 +3,7 @@ import {csv} from "d3";
 
 
 const csvUrl =
-  'https://gist.githubusercontent.com/curran/a08a1080b88344b0c8a7/raw/639388c2cbc2120a14dcf466e85730eb8be498bb/iris.csv';
+  'https://gist.githubusercontent.com/curran/90240a6d88bdb1411467b21ea0769029/raw/7d4c3914cc6a29a7f5165f7d5d82b735d97bcfe4/week_temperature_sf.csv';
 
 
 export const useData = () => {
@@ -12,10 +12,8 @@ export const useData = () => {
 
   useEffect(() => {
     const row = d => {
-      d.sepal_length = +d.sepal_length;
-      d.sepal_width = +d.sepal_width;
-      d.petal_length = +d.petal_length;
-      d.petal_width = +d.petal_width;
+      d.temperature = +d.temperature;
+      d.timestamp = new Date(d.timestamp)
       return d;
     };
     csv(csvUrl, row).then(setData);
