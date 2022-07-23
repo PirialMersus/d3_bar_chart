@@ -46,6 +46,8 @@ const App = () => {
   const yScale = scaleLinear()
     .domain(extent(data, yValue))
     .range([innerHeight, 0])
+    .nice();
+
 
   return (
     <svg width={width} height={height}>
@@ -54,7 +56,7 @@ const App = () => {
           xScale={xScale}
           innerHeight={innerHeight}
           tickFormat={xAxisTickFormat}
-          tickOffset={5}
+          tickOffset={7}
         />
 
         <text
@@ -66,7 +68,7 @@ const App = () => {
         >
           {yAxisLabel}
         </text>
-        <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={5}/>
+        <AxisLeft yScale={yScale} innerWidth={innerWidth} tickOffset={7}/>
         <text
           className='axis-label'
           x={innerWidth / 2}
@@ -82,7 +84,7 @@ const App = () => {
           xValue={xValue}
           yValue={yValue}
           tooltipFormat={xAxisTickFormat}
-          circleRadius={7}
+          circleRadius={4}
         />
       </g>
     </svg>
