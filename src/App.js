@@ -1,28 +1,41 @@
-import React, {} from 'react';
+import React, {useState} from 'react';
 // import {scaleTime, scaleLinear, extent, timeFormat} from 'd3';
-import {useData} from "./hooks/useData";
 
-import {Marks} from "./components/Marks";
+import {Dropdown} from "./components/Dropdown";
 import './App.css'
 
 const width = 960;
 const height = 500;
 
+const options = [
+  {value: 'dog', label: 'Dog'},
+  {value: 'cat', label: 'Cat'},
+  {value: 'hamster', label: 'Hamster'},
+  {value: 'parrot', label: 'Parrot'},
+  {value: 'spider', label: 'Spider'},
+  {value: 'goldfish', label: 'Goldfish'}
+];
+
 
 const App = () => {
+  const [selectedValue, setSelectedValue] = useState('hamster');
+  console.log(selectedValue)
+  // const data = useData();
 
-  const data = useData();
-
-  if (!data) {
-    return <pre>Loading...</pre>;
-  }
+  // if (!data) {
+  //   return <pre>Loading...</pre>;
+  // }
 
   return (
-    <svg width={width} height={height}>
-      <Marks
-        data={data}
+    <div>
+      <label htmlFor="pet-select">Choose a pet</label>
+      <Dropdown
+        options={options}
+        id={"pet-select"}
+        onSelectedValueChange={setSelectedValue}
+        selectedValue={selectedValue}
       />
-    </svg>
+    </div>
   );
 };
 

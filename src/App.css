@@ -1,16 +1,10 @@
-
-.marks .land{
-  fill: #137B80;
+body {
+  margin: 0;
+  overflow: hidden;
 }
-.marks .sphere{
-  fill: #ececec;
+label, select {
+  font-size: 4em;
 }
-
-.marks .interiors{
-  fill: none;
-  stroke: #339498;
-}
-.marks .graticules{
-  fill: none;
-  stroke: #dadada;
+select option {
+  font-size: 1rem;
 }
