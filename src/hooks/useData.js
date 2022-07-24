@@ -8,7 +8,7 @@ const csvUrl =
 
 export const useData = () => {
   const [data, setData] = useState(null);
-  console.log('data', data)
+  // console.log('data', data)
 
   useEffect(() => {
     const row = d => {
