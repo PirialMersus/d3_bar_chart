@@ -43,21 +43,28 @@
 
 .tick text {
     fill: #635F5D;
+    cursor: default;
 }
 
-.mark {
-    fill: #137B80;
-}
-
-.axis-label {
+.axis-label, .dropdown-label {
     font-size: 2.5em;
     fill: #635F5D;
+    color: #635F5D;
 }
 
-label, select {
-    font-size: 3em;
+.Dropdown-root {
+    font-size: 1.5em;
+    width: 300px;
+    display: inline-block;
 }
 
-select option {
-    font-size: 1rem;
+.Dropdown-menu {
+    max-height: 400px !important;
+}
+
+.menus-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
