@@ -9,7 +9,7 @@ import './App.css'
 const width = 960;
 const height = 500;
 const margin = {top: 20, bottom: 65, left: 90, right: 30}
-const xAxisLabelOffset = 50;
+const xAxisLabelOffset = 80;
 const yAxisLabelOffset = 45;
 
 
@@ -23,12 +23,14 @@ const App = () => {
   // console.log(data[0]);
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
+  // d['Total Dead and Missing'] = +d['Total Dead and Missing'];
+  // d['Reported Date'] = new Date(d['Reported Date'])
 
-  const xValue = d => d.timestamp
+  const xValue = d => d['Reported Date']
   const xAxisLabel = 'Time'
 
-  const yValue = d => d.temperature
-  const yAxisLabel = 'Temperature'
+  const yValue = d => d['Total Dead and Missing']
+  const yAxisLabel = 'Total Dead and Missing'
 
 
   // d.sepal_length = +d.sepal_length;
@@ -36,7 +38,7 @@ const App = () => {
   // d.petal_length = +d.petal_length;
   // d.petal_width = +d.petal_width;
 
-  const xAxisTickFormat = timeFormat('%a')
+  const xAxisTickFormat = timeFormat('%m/%d/%Y')
 
   const xScale = scaleTime()
     .domain(extent(data, xValue))
@@ -82,7 +84,7 @@ const App = () => {
           xValue={xValue}
           yValue={yValue}
           tooltipFormat={xAxisTickFormat}
-          circleRadius={7}
+          circleRadius={2}
         />
       </g>
     </svg>
