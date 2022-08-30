@@ -1,12 +1,14 @@
 import React from "react";
 
-export const Marks = ({data, xScale, yScale, xValue, yValue, tooltipFormat, circleRadius}) => data.map((d) => (
-  <circle
+export const Marks = ({binnedData, xScale, yScale, tooltipFormat, innerHeight}) => binnedData.map((d) => (
+  <rect
+    key={Math.random()}
     className='mark'
-    cx={xScale(xValue(d))}
-    cy={yScale(yValue(d))}
-    r={circleRadius}
+    x={xScale(d.x0)}
+    y={yScale(d.y)}
+    width={xScale(d.x1) - xScale(d.x0)}
+    height={innerHeight - yScale(d.y)}
   >
-    <title>{tooltipFormat(xValue(d))}</title>
-  </circle>
+    <title>{tooltipFormat(d.y)}</title>
+  </rect>
 ))
