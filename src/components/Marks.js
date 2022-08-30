@@ -7,7 +7,7 @@ const graticule = geoGraticule()
 
 export const Marks = ({
                         worldAtlas: {land, interiors},
-                        cities,
+                        data,
                         sizeScale,
                         sizeValue
                       }) => {
@@ -20,8 +20,8 @@ export const Marks = ({
         <path className='land' key={Math.random()} d={path(feature)}/>
       ))}
     <path className='interiors' d={path(interiors)}/>
-    {cities.map(d => {
-      const [x, y] = projection([d.lng, d.lat])
+    {data.map(d => {
+      const [x, y] = projection(d.coords)
       return <circle cx={x} cy={y} r={sizeScale(sizeValue(d))}/>
     })}
   </g>)
