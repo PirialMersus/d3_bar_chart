@@ -10,11 +10,23 @@
   fill: none;
   stroke: #c3c3c3;
 }
-.marks .graticules{
+.marks .graticules, .tick line{
   fill: none;
   stroke: #dadada;
 }
 circle {
   fill: #127B80;
   opacity: 0.3;
+}
+
+.tick text {
+  fill: #635F5D;
+  font-size: 0.5em;
+}
+.mark {
+  fill: #137B80;
+}
+.axis-label {
+  font-size: 0.5em;
+  fill: #635F5D;
 }

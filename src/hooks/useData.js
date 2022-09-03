@@ -11,6 +11,7 @@ const row = d => {
     .map(d => +d)
     .reverse()
   d['Total Dead and Missing'] = +d['Total Dead and Missing']
+  d['Reported Date'] = new Date(d['Reported Date']);
   return d;
 }
 export const useData = () => {
